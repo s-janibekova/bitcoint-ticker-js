@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
+    <title>Bitcoin ticket</title>
+  </head>
+<style>
+  body {
+    text-align: center;
+    font-family: 'Gelasio', serif;
+    background-color: #effffb;
+  }
+
+  select {
+  margin: 50px;
+  width: 150px;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  border: 1px solid #CCC;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+    display: none; /* Remove default arrow in Internet Explorer 10 and 11 */
+}
+
+form {
+  color: #018383;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+  </style>
+
+  <body>
+    <form action="/" method="post">
+      <select name="crypto">
+        <option value="BTC">Bitcoin</option>
+        <option value="ETH">Etherium</option>
+        <option value="LTC">Lightcoin</option>
+      </select>
+      <select name="fiat">
+        <option value="KZT">Тенге</option>
+        <option value="RUL">Рубль</option>
+        <option value="USD">Доллар</option>
+      </select>
+
+      <button type="submit" name="button">Check</button>
+    </form>
+  </body>
+</html>
