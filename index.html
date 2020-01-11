@@ -2,15 +2,15 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Baloo+Bhai|Bree+Serif|Ibarra+Real+Nova&display=swap" rel="stylesheet">
     <title>Bitcoin ticket</title>
   </head>
+
 <style>
   body {
     text-align: center;
-    font-family: 'Gelasio', serif;
-    background-color: #effffb;
+    font-family: 'Acme', sans-serif;
+    background-color: #faf5e4;
   }
 
   select {
@@ -42,11 +42,24 @@ form {
   display: inline-block;
   font-size: 16px;
 }
+  .converting {
+    align-items: center;
+    padding: 3%;
+    margin: 2%;
+  }
 
+  input {
+    height: 30px;
+    border-radius: 2%;
+    border: 1px solid opacity: 0.5;
+  }
   </style>
 
   <body>
     <form action="/" method="post">
+      <div class="converting">
+        <input type="text" name="amount" placeholder="Введите количество ">
+      </div>
       <select name="crypto">
         <option value="BTC">Bitcoin</option>
         <option value="ETH">Etherium</option>
@@ -60,5 +73,6 @@ form {
 
       <button type="submit" name="button">Check</button>
     </form>
+  </div>
   </body>
 </html>

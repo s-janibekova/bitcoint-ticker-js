@@ -14,17 +14,37 @@ app.get("/", (req, res)=>{
 app.post("/", (req, res) => {
   var crypto = req.body.crypto
   var fiat = req.body.fiat
-  var apiUrl = "https://apiv2.bitcoinaverage.com/indices/global/ticker/"
+  var amount = req.body.amount
+  var apiUrl = " https://apiv2.bitcoinaverage.com/convert/global"
 
-  var fullUrl = apiUrl + crypto + fiat
+  var options = {
+    url : apiUrl,
+    method: 'GET',
+    qs: {
+      from: crypto,
+      to: fiat,
+      amount: amount
+    }
+  }
 
-  console.log(fullUrl)
-  request(fullUrl, (err, response, body)=> {
+  request(options, (err, response, body)=> {
     var data = JSON.parse(body)
-    var price = data.last
-    var currentDate = data.display_timestamp
-    res.write('<head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></head> <p>Дата ' + currentDate + "</p>")
-    res.write("<h1>Текущая цена на  " + crypto + "  равна  " + price +" "+ fiat + "</h1>")
+    console.log(data)
+    var price = data.price
+    var currentDate = data.time
+    res.write(`<head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Baloo+Bhai|Bree+Serif|Ibarra+Real+Nova&display=swap" rel="stylesheet">
+    </head>
+    <style>
+    body {
+      background-color: #faf5e4;
+      text-align: center;
+      color: #35477d;
+      font-family: 'Acme', sans-serif;
+      }
+    </style>
+    <p style="padding: 5%">Дата ` + currentDate + "</p>")
+    res.write("<h1>Текущая цена на <strong>"+ amount + "</strong> " + crypto + "  равна  <strong>" + price +"  </strong>"+ fiat + "</h1>")
     res.send()
   })
 })
